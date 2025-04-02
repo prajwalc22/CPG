@@ -1,12 +1,20 @@
-# React + Vite
+A modern, responsive portrait gallery application built with React, featuring lazy loading, infinite scroll, and a cinematic UI experience.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🌟 Features
 
-Currently, two official plugins are available:
+- **Lazy Loading**: Optimized image loading using Intersection Observer
+- **Infinite Scroll**: Seamless content loading as users scroll
+- **Responsive Design**: Beautiful layout across all devices
+- **Profile Statistics**: User engagement metrics and gallery stats
+- **Modern UI**: Cinematic-inspired user interface
+- **Performance Optimized**: Fast loading and smooth scrolling experience
+- **Cross-Browser Compatible**: Works on all modern browsers
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Quick Start
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js (v14 or higher)
+- npm or yarn
+- Modern web browser
+- Git
