@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { HeartIcon, BookmarkIcon } from "@heroicons/react/outline";
+import { HeartIcon, BookmarkIcon } from "@heroicons/react/24/outline";
 
 const PhotoCard = ({ photo }) => {
   const [isHovered, setIsHovered] = useState(false);

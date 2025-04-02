@@ -1,5 +1,9 @@
 import React, { useState, useRef } from "react";
-import { SearchIcon, AdjustmentsIcon, XIcon } from "@heroicons/react/outline";
+import {
+  MagnifyingGlassIcon,
+  AdjustmentsVerticalIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -77,7 +81,7 @@ const SearchBar = () => {
           onChange={(e) => setQuery(e.target.value)}
           className="w-full py-3 pl-12 pr-12 rounded-full bg-surface border border-divider text-text-primary focus:border-accent-primary focus:ring-1 focus:ring-accent-primary focus:outline-none transition-colors"
         />
-        <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary" />
+        <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary" />
 
         <button
           type="button"
@@ -85,7 +89,7 @@ const SearchBar = () => {
           className="absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary hover:text-accent-primary transition-colors"
           aria-label="Toggle filters"
         >
-          <AdjustmentsIcon className="w-5 h-5" />
+          <AdjustmentsVerticalIcon className="w-5 h-5" />
         </button>
       </form>
 

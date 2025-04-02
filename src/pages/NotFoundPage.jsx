@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeftIcon } from "@heroicons/react/outline";
+import { ArrowLeftIcon } from "@heroicons/react/24/solid"; // ✅ Corrected Import
 import Button from "../components/common/Button";
 
 const NotFoundPage = () => {
@@ -18,7 +18,7 @@ const NotFoundPage = () => {
           <Button
             to="/"
             variant="primary"
-            icon={<ArrowLeftIcon className="w-5 h-5" />}
+            icon={<ArrowLeftIcon className="w-5 h-5" />} // ✅ Fixed Icon
             iconPosition="left"
           >
             Back to Home

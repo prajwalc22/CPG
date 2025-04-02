@@ -1,11 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
-  LocationMarkerIcon,
-  GlobeIcon,
-  UserAddIcon,
+  MapPinIcon,
+  GlobeAltIcon,
+  UserPlusIcon,
   CameraIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/24/solid"; // ✅ Corrected imports
 
 const ProfileHeader = ({ profile }) => {
   return (
@@ -54,11 +55,11 @@ const ProfileHeader = ({ profile }) => {
               </div>
 
               <div className="flex gap-3">
-                <button className="px-5 py-2.5 rounded-md bg-accent-primary text-black font-medium hover:bg-opacity-90 transition-colors">
-                  <UserAddIcon className="w-5 h-5 inline mr-2" />
+                <button className="px-5 py-2.5 rounded-md bg-accent-primary text-black font-medium hover:bg-opacity-80 transition-colors">
+                  <UserPlusIcon className="w-5 h-5 inline mr-2" />
                   <span>Follow</span>
                 </button>
-                <button className="px-5 py-2.5 rounded-md bg-transparent border border-accent-primary text-accent-primary hover:bg-accent-primary hover:bg-opacity-10 transition-colors">
+                <button className="px-5 py-2.5 rounded-md border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-black transition-colors">
                   Contact
                 </button>
               </div>
@@ -67,20 +68,26 @@ const ProfileHeader = ({ profile }) => {
             <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-text-secondary">
               {profile.location && (
                 <div className="flex items-center gap-1.5">
-                  <LocationMarkerIcon className="w-4 h-4" />
+                  <MapPinIcon className="w-4 h-4" />
                   <span>{profile.location}</span>
                 </div>
               )}
               {profile.website && (
                 <div className="flex items-center gap-1.5">
-                  <GlobeIcon className="w-4 h-4" />
+                  <GlobeAltIcon className="w-4 h-4" />
                   <a
                     href={profile.website}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-accent-primary transition-colors"
                   >
-                    {new URL(profile.website).hostname}
+                    {(() => {
+                      try {
+                        return new URL(profile.website).hostname;
+                      } catch {
+                        return profile.website;
+                      }
+                    })()}
                   </a>
                 </div>
               )}
@@ -97,19 +104,19 @@ const ProfileHeader = ({ profile }) => {
             <div className="mt-6 flex gap-6">
               <div>
                 <span className="text-text-primary font-medium">
-                  {profile.stats.photos}
+                  {profile.stats.photos.toLocaleString()}
                 </span>
                 <span className="text-text-secondary ml-1">Photos</span>
               </div>
               <div>
                 <span className="text-text-primary font-medium">
-                  {profile.stats.followers}
+                  {profile.stats.followers.toLocaleString()}
                 </span>
                 <span className="text-text-secondary ml-1">Followers</span>
               </div>
               <div>
                 <span className="text-text-primary font-medium">
-                  {profile.stats.following}
+                  {profile.stats.following.toLocaleString()}
                 </span>
                 <span className="text-text-secondary ml-1">Following</span>
               </div>
@@ -123,9 +130,9 @@ const ProfileHeader = ({ profile }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex">
             {["Gallery", "Collections", "About", "Gear"].map((item, index) => (
-              <a
+              <Link
                 key={index}
-                href={`#${item.toLowerCase()}`}
+                to={`/${profile.username}/${item.toLowerCase()}`}
                 className={`px-5 py-4 text-sm font-medium ${
                   index === 0
                     ? "text-accent-primary border-b-2 border-accent-primary"
@@ -133,7 +140,7 @@ const ProfileHeader = ({ profile }) => {
                 }`}
               >
                 {item}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>

@@ -4,7 +4,7 @@ import MasonryGrid from "../components/gallery/MasonryGrid";
 import SearchBar from "../components/common/SearchBar";
 import Loader from "../components/common/Loader";
 import Badge from "../components/common/Badge";
-import { XCircleIcon } from "@heroicons/react/outline";
+import { XCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useGallery } from "../context/GalleryContext";
 
 const SearchResultsPage = () => {
@@ -139,7 +139,7 @@ const SearchResultsPage = () => {
               >
                 <span>Lighting: {light}</span>
                 <button onClick={() => removeFilter("lighting", light)}>
-                  <XIcon className="w-3 h-3" />
+                  <XMarkIcon className="w-3 h-3" />
                 </button>
               </Badge>
             ))}
@@ -152,7 +152,7 @@ const SearchResultsPage = () => {
               >
                 <span>Tone: {tone}</span>
                 <button onClick={() => removeFilter("colorTone", tone)}>
-                  <XIcon className="w-3 h-3" />
+                  <XMarkIcon className="w-3 h-3" />
                 </button>
               </Badge>
             ))}
@@ -161,7 +161,7 @@ const SearchResultsPage = () => {
               <Badge variant="primary" className="flex items-center gap-1">
                 <span>Orientation: {filterParams.orientation}</span>
                 <button onClick={() => removeFilter("orientation")}>
-                  <XIcon className="w-3 h-3" />
+                  <XMarkIcon className="w-3 h-3" />
                 </button>
               </Badge>
             )}

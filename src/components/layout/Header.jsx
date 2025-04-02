@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { motion } from "framer-motion";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
 import SearchBar from "../common/SearchBar";
 import Logo from "../common/Logo";
 
@@ -42,7 +44,6 @@ const Header = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-
           <Logo />
 
           {/* Desktop Navigation */}
@@ -52,7 +53,7 @@ const Header = () => {
                 key={item.name}
                 to={item.path}
                 className={`text-sm font-medium transition-colors hover:text-accent-primary ${
-                  location.pathname === item.path
+                  location.pathname.startsWith(item.path)
                     ? "text-accent-primary"
                     : "text-text-primary"
                 }`}
@@ -81,25 +82,34 @@ const Header = () => {
             className="md:hidden text-text-primary p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? (
               <XMarkIcon className="h-6 w-6" />
             ) : (
-              <MenuIcon className="h-6 w-6" />
+              <Bars3Icon className="h-6 w-6" />
             )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`md:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}>
+      {/* Mobile Menu with Animation */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{
+          opacity: isMobileMenuOpen ? 1 : 0,
+          y: isMobileMenuOpen ? 0 : -10,
+        }}
+        transition={{ duration: 0.3 }}
+        className={`md:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}
+      >
         <div className="px-4 py-3 space-y-1 bg-surface border-t border-divider">
           {navItems.map((item) => (
             <Link
               key={item.name}
               to={item.path}
               className={`block py-2 text-base font-medium transition-colors ${
-                location.pathname === item.path
+                location.pathname.startsWith(item.path)
                   ? "text-accent-primary"
                   : "text-text-primary"
               }`}
@@ -122,7 +132,7 @@ const Header = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     </header>
   );
 };

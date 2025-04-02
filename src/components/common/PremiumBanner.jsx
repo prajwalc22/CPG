@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  XIcon,
+  XMarkIcon,
   SparklesIcon,
-  ChartSquareBarIcon,
+  ChartBarSquareIcon,
   StarIcon,
-  BadgeCheckIcon,
-} from "@heroicons/react/outline";
+  CheckBadgeIcon,
+} from "@heroicons/react/24/outline";
 
 const PremiumBanner = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -40,7 +40,7 @@ const PremiumBanner = () => {
             className="absolute top-3 right-3 text-text-secondary hover:text-text-primary transition-colors"
             aria-label="Close banner"
           >
-            <XIcon className="w-5 h-5" />
+            <XMarkIcon className="w-5 h-5" />
           </button>
 
           <div className="relative px-6 py-8 md:flex items-center justify-between gap-6">
@@ -64,7 +64,7 @@ const PremiumBanner = () => {
 
               <div className="flex flex-wrap gap-4 mb-5">
                 <div className="flex items-center gap-1.5">
-                  <ChartSquareBarIcon className="w-4 h-4 text-accent-primary" />
+                  <ChartBarSquareIcon className="w-4 h-4 text-accent-primary" />
                   <span className="text-text-primary text-sm">
                     Advanced Analytics
                   </span>
@@ -76,7 +76,7 @@ const PremiumBanner = () => {
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <BadgeCheckIcon className="w-4 h-4 text-accent-primary" />
+                  <CheckBadgeIcon className="w-4 h-4 text-accent-primary" />
                   <span className="text-text-primary text-sm">
                     Verified Profile
                   </span>

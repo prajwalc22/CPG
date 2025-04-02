@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  XIcon,
+  XMarkIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   CameraIcon,
-  LocationMarkerIcon,
-} from "@heroicons/react/outline";
+  MapPinIcon,
+} from "@heroicons/react/24/outline";
 
 const LightBox = ({
   photo,
@@ -66,7 +66,7 @@ const LightBox = ({
           onClick={onClose}
           aria-label="Close lightbox"
         >
-          <XIcon className="w-6 h-6" />
+          <XMarkIcon className="w-6 h-6" />
         </button>
 
         <div className="relative w-full h-full flex items-center justify-center">
@@ -128,7 +128,7 @@ const LightBox = ({
                     )}
                     {photo.location && (
                       <div className="flex items-center gap-1">
-                        <LocationMarkerIcon className="w-4 h-4" />
+                        <MapPinMarkerIcon className="w-4 h-4" />
                         <span>{photo.location}</span>
                       </div>
                     )}

@@ -7,12 +7,14 @@ import {
   ShareIcon,
   CameraIcon,
   CalendarIcon,
-  MapIcon,
-} from "@heroicons/react/outline";
+  MapPinIcon, // ✅ Fixed incorrect MapIcon (should be MapPinIcon)
+} from "@heroicons/react/24/outline"; // ✅ Corrected import
+
 import {
   HeartIcon as HeartIconSolid,
   BookmarkIcon as BookmarkIconSolid,
-} from "@heroicons/react/solid";
+} from "@heroicons/react/24/solid"; // ✅ Corrected import
+
 import Avatar from "../components/common/Avatar";
 import Button from "../components/common/Button";
 import IconButton from "../components/common/IconButton";
@@ -34,7 +36,6 @@ const PhotoDetailPage = () => {
     // Fetch photo details when component mounts or ID changes
     const fetchPhotoDetails = async () => {
       setLoading(true);
-
       try {
         const photoData = await getPhotoById(id);
         setPhoto(photoData);
@@ -158,7 +159,8 @@ const PhotoDetailPage = () => {
                 )}
                 {photo.location && (
                   <div className="flex items-center gap-1">
-                    <MapIcon className="w-4 h-4" />
+                    <MapPinIcon className="w-4 h-4" />{" "}
+                    {/* ✅ Fixed incorrect icon */}
                     <span>{photo.location}</span>
                   </div>
                 )}
@@ -193,36 +195,6 @@ const PhotoDetailPage = () => {
               </Button>
             </div>
           </div>
-
-          {/* Related photos section */}
-          {relatedPhotos.length > 0 && (
-            <div className="mt-16">
-              <h3 className="text-2xl font-medium text-text-primary mb-6">
-                Related Photos
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {relatedPhotos.map((relatedPhoto) => (
-                  <Link
-                    key={relatedPhoto.id}
-                    to={`/photo/${relatedPhoto.id}`}
-                    className="group relative overflow-hidden rounded-lg shadow-md bg-surface"
-                  >
-                    <img
-                      src={relatedPhoto.url}
-                      alt={relatedPhoto.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80"></div>
-                    <div className="absolute bottom-0 left-0 p-4">
-                      <h3 className="text-white font-medium text-lg">
-                        {relatedPhoto.title}
-                      </h3>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>

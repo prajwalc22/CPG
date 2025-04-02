@@ -17,6 +17,9 @@ export default defineConfig({
       "@context": path.resolve(__dirname, "./src/context"),
     },
   },
+  optimizeDeps: {
+    include: ["@heroicons/react/24/outline", "@heroicons/react/24/solid"],
+  },
   server: {
     port: 3000,
     host: true,
@@ -28,7 +31,10 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ["react", "react-dom", "react-router-dom", "framer-motion"],
-          ui: ["@heroicons/react"],
+          heroicons: [
+            "@heroicons/react/24/outline",
+            "@heroicons/react/24/solid",
+          ],
         },
       },
     },
